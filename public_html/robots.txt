@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /executive-brief.html
+Disallow: /assets/
+
+Sitemap: https://www.sintelops.it/sitemap.xml
