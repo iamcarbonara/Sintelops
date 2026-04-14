@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Operational Execution Specialists | Sintelops Boutique</title>
+  <meta name="description" content="Specialists in operational execution for B2B companies with 50+ employees. Meet the team and our Boutique approach.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+
+  <link rel="alternate" href="https://www.sintelops.it/chi-siamo.html" hreflang="it" />
+  <link rel="alternate" href="https://www.sintelops.it/en/about-us.html" hreflang="en" />
+  <link rel="alternate" href="https://www.sintelops.it/chi-siamo.html" hreflang="x-default" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">Sintelops</a>
+    <button class="hamburger" id="mobile-menu-btn">☰</button>
+    <div class="nav-menu" id="nav-menu">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="about-us.html" class="nav-link active">About Us</a>
+      <a href="diagnosis.html" class="nav-link">Diagnosis</a>
+      <a href="contacts.html" class="btn btn-gold">Contact</a>
+      <a href="../chi-siamo.html" class="nav-link" style="font-size: 12px; opacity: 0.7; margin-left: 8px;">🇮🇹 IT</a>
+    </div>
+  </nav>
+
+  <!-- POSITIONING -->
+  <header class="section">
+    <div class="container">
+      <span class="section-label">Positioning</span>
+      <h1 class="section-title">We're not generic consultants.<br>We're execution specialists.</h1>
+      <p class="lead">We intervene where growth creates invisible complexity: between leadership that decides and operations that execute, between functions that don't coordinate, between processes that generate friction instead of results.</p>
+    </div>
+  </header>
+
+  <!-- APPROACH -->
+  <section class="section" style="background: var(--cream-dark);">
+    <div class="container">
+      <span class="section-label">Our approach</span>
+      <h2 class="section-title">What we solve (and what we don't)</h2>
+      <div class="team-grid" style="margin-top: 48px;">
+        <div class="service-card" data-aos="fade-up">
+          <h3 class="service-title" style="color: var(--stripe-purple);">✓ What we do</h3>
+          <p class="service-desc">Operational governance: process mapping, decision architecture, inter-departmental alignment, structured hand-off, management by exception, technological workflow design.</p>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="service-title" style="color: var(--stripe-body);">✕ What we don't do</h3>
+          <p class="service-desc">We don't produce theoretical strategic plans, motivational training, pure IT system integration, executive coaching or generic management consulting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGAGEMENT MODEL -->
+  <section class="section">
+    <div class="container" data-aos="fade-up">
+      <span class="section-label">Engagement model</span>
+      <h2 class="section-title">Boutique, not Industrial</h2>
+      <p class="lead">Every engagement follows a structured yet flexible path. We work alongside leadership — never above, never below — to build an operating model that makes sense for your specific reality. No templates. No slide decks left to collect dust.</p>
+      <a href="services.html" class="btn btn-primary" style="margin-top: 24px;">Explore our services</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Sintelops</div>
+          <p style="color: rgba(255,255,255,0.6); max-width: 320px; font-size: 14px;">Strategic Intelligence operations for your business. We remove organizational friction and make B2B companies fast and manageable.</p>
+        </div>
+        <div class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="about-us.html">About Us</a>
+          <a href="diagnosis.html">Diagnosis</a>
+          <a href="contacts.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-note">© 2026 Sintelops. All rights reserved.</div>
+        <div class="footer-note">VAT: 00000000000 <span style="margin: 0 12px; opacity: 0.3;">|</span> HQ: Milan, Italy</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 700, offset: 100 });
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const navMenu = document.getElementById('nav-menu');
+    mobileBtn.addEventListener('click', () => { navMenu.classList.toggle('active'); });
+  </script>
+</body>
+</html>
