@@ -83,34 +83,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <h2 style="font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--navy); margin-bottom: 24px;">Lasciaci un messaggio</h2>
               
               <!-- Formspree Placeholder: replace the action URL with your actual Formspree endpoint -->
-              <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+              <div data-fs-success style="margin-bottom: 24px; padding: 16px; background: #E8F5E9; color: #2E7D32; border-radius: 4px; display: none;">Grazie per il tuo messaggio. Ti ricontatteremo a breve.</div>
+              <div data-fs-error style="margin-bottom: 24px; padding: 16px; background: #FFEBEE; color: #C62828; border-radius: 4px; display: none;">C'è stato un problema con l'invio del modulo. Riprova più tardi.</div>
+
+              <form id="contact-form">
                 
                 <div class="form-group">
                   <label for="name" class="form-label">Nome Completo</label>
-                  <input type="text" id="name" name="name" class="form-control" required>
+                  <input type="text" id="name" name="name" class="form-control" data-fs-field required>
+                  <span data-fs-error="name" style="color: #C62828; font-size: 14px; margin-top: 4px; display: block;"></span>
                 </div>
                 
                 <div class="form-group">
                   <label for="company" class="form-label">Azienda</label>
-                  <input type="text" id="company" name="company" class="form-control" required>
+                  <input type="text" id="company" name="company" class="form-control" data-fs-field required>
+                  <span data-fs-error="company" style="color: #C62828; font-size: 14px; margin-top: 4px; display: block;"></span>
                 </div>
 
                 <div class="form-group">
                   <label for="email" class="form-label">Email Professionale</label>
-                  <input type="email" id="email" name="email" class="form-control" required>
+                  <input type="email" id="email" name="email" class="form-control" data-fs-field required>
+                  <span data-fs-error="email" style="color: #C62828; font-size: 14px; margin-top: 4px; display: block;"></span>
                 </div>
 
                 <div class="form-group">
                   <label for="message" class="form-label">Messaggio</label>
-                  <textarea id="message" name="message" class="form-control" placeholder="Raccontaci brevemente in che fase si trova l'azienda e quali sfide operative state affrontando..." required></textarea>
+                  <textarea id="message" name="message" class="form-control" placeholder="Raccontaci brevemente in che fase si trova l'azienda e quali sfide operative state affrontando..." data-fs-field required></textarea>
+                  <span data-fs-error="message" style="color: #C62828; font-size: 14px; margin-top: 4px; display: block;"></span>
                 </div>
                 
                 <div class="form-group">
                   <label for="source" class="form-label">Come ci hai trovato?</label>
-                  <input type="text" id="source" name="source" class="form-control">
+                  <input type="text" id="source" name="source" class="form-control" data-fs-field>
+                  <span data-fs-error="source" style="color: #C62828; font-size: 14px; margin-top: 4px; display: block;"></span>
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Invia Messaggio</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%;" data-fs-submit-btn>Invia Messaggio</button>
               </form>
             </div>
           </div>
@@ -163,5 +171,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const navMenu = document.getElementById('nav-menu');
     mobileBtn.addEventListener('click', () => { navMenu.classList.toggle('active'); });
   </script>
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#contact-form', formId: 'mojyjarv' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
