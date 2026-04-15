@@ -391,16 +391,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .stat-num {
-  font-size: 32px;
+  font-size: 64px;
   font-weight: 300;
   color: var(--stripe-purple);
-  line-height: 1.1;
-  letter-spacing: -0.64px;
+  line-height: 1;
+  letter-spacing: -1.2px;
 }
 
 .stat-label {
-  font-size: 12px;
-  color: var(--stripe-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--stripe-navy);
   margin-top: 8px;
 }
 
