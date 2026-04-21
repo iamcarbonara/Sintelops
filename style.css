@@ -901,3 +901,108 @@ textarea.form-control {
   .section-title, .section-title-light { font-size: 32px; letter-spacing: -0.64px; }
   .footer-bottom { flex-direction: column; gap: 16px; align-items: flex-start; }
 }
+
+/* --- Resource Page Specific --- */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 250px;
+  padding: 12px 16px;
+  border: 1px solid var(--border-default);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 16px;
+  background: var(--white);
+  color: var(--navy);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--stripe-purple);
+  box-shadow: 0 0 0 3px rgba(105,97,255,0.1);
+}
+
+.filter-btn {
+  padding: 10px 20px;
+  background: var(--white);
+  border: 1px solid var(--border-default);
+  border-radius: 4px;
+  color: var(--stripe-navy);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--stripe-purple);
+  color: var(--stripe-purple);
+}
+
+.filter-btn.active {
+  background: var(--stripe-purple);
+  color: #fff;
+  border-color: var(--stripe-purple);
+}
+
+.resource-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 37, 64, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.resource-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.resource-modal {
+  background: var(--white);
+  width: 90%;
+  max-width: 500px;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.15);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.resource-modal-overlay.active .resource-modal {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--stripe-body);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: var(--stripe-navy);
+}

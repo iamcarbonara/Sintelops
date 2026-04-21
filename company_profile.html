@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #162236;
+    --navy-light: #1E3048;
+    --gold: #C9A84C;
+    --gold-light: #E2C47A;
+    --cream: #F5F0E8;
+    --cream-dark: #E8E0D0;
+    --text-dark: #0D1B2A;
+    --text-muted: #6B7A8D;
+    --white: #FFFFFF;
+    --rule: rgba(201,168,76,0.35);
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--navy);
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 64px 72px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 480px; height: 480px;
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 50%;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .cover-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .cover-year {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .cover-main { padding: 80px 0 40px; }
+
+  .cover-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 7vw, 84px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .cover-headline em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .cover-divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 32px 0;
+  }
+
+  .cover-tagline {
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    max-width: 460px;
+    line-height: 1.75;
+  }
+
+  .cover-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .cover-stats {
+    display: flex;
+    gap: 56px;
+  }
+
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+    display: block;
+  }
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-top: 4px;
+    display: block;
+  }
+
+  .cover-type {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 80px 72px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .section-alt {
+    background: var(--navy);
+    color: var(--white);
+    max-width: 100%;
+    padding: 80px 72px;
+  }
+  .section-alt .section-inner { max-width: 960px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .section-label-light {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 32px;
+    color: var(--navy);
+  }
+
+  .section-title-light {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 32px;
+    color: var(--white);
+  }
+
+  .lead {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #3A4A5C;
+    max-width: 680px;
+    margin-bottom: 24px;
+  }
+
+  .lead-light {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.7);
+    max-width: 680px;
+    margin-bottom: 24px;
+  }
+
+  /* ── SERVICES GRID ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 48px;
+    background: var(--cream-dark);
+  }
+
+  .service-card {
+    background: var(--white);
+    padding: 40px 36px;
+    position: relative;
+  }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--cream-dark);
+    line-height: 1;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .service-title {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .service-bullets {
+    list-style: none;
+    border-top: 1px solid var(--cream-dark);
+    padding-top: 16px;
+  }
+
+  .service-bullets li {
+    font-size: 13px;
+    color: #4A5568;
+    padding: 5px 0 5px 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .service-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 13px;
+    width: 5px; height: 1px;
+    background: var(--gold);
+  }
+
+  /* ── TECH SECTION ── */
+  .tech-band {
+    background: var(--navy-light);
+    padding: 56px 72px;
+  }
+  .tech-inner { max-width: 960px; margin: 0 auto; }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .tech-item {
+    border-left: 2px solid var(--gold);
+    padding-left: 20px;
+  }
+
+  .tech-item-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .tech-item-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.65;
+  }
+
+  /* ── NOT LIST ── */
+  .not-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 40px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .not-item {
+    padding: 24px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-right: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .not-item:nth-child(even) { border-right: none; }
+  .not-item:nth-last-child(-n+2) { border-bottom: none; }
+
+  .not-x {
+    font-size: 11px;
+    font-weight: 500;
+    color: #C05050;
+    letter-spacing: 0.05em;
+    padding-top: 3px;
+    flex-shrink: 0;
+    background: rgba(192,80,80,0.12);
+    width: 22px; height: 22px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 2px;
+  }
+
+  .not-text {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+
+  /* ── CLIENT IDEAL ── */
+  .client-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-top: 16px;
+  }
+
+  .client-numbers {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .client-num-item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .client-num-item:last-child { border-bottom: none; }
+
+  .cn-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--navy);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .cn-label {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+
+  .problem-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--cream-dark);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .prob-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 9px;
+    flex-shrink: 0;
+  }
+
+  .prob-text {
+    font-size: 14px;
+    font-weight: 300;
+    color: #4A5568;
+    line-height: 1.6;
+  }
+
+  /* ── TEAM ── */
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 48px;
+    background: var(--cream-dark);
+  }
+
+  .team-card {
+    background: var(--white);
+    padding: 40px 36px;
+  }
+
+  .team-initial {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 300;
+    color: var(--navy);
+    line-height: 1;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .team-role-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .team-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: #4A5568;
+    line-height: 1.75;
+    border-top: 1px solid var(--cream-dark);
+    padding-top: 16px;
+  }
+
+  /* ── OUTCOMES ── */
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .outcome-card {
+    background: var(--navy-mid);
+    padding: 32px 28px;
+  }
+
+  .outcome-icon {
+    font-size: 22px;
+    margin-bottom: 16px;
+    display: block;
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+  }
+
+  .outcome-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .outcome-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  /* ── ENGAGEMENT ── */
+  .phases {
+    display: flex;
+    gap: 0;
+    margin-top: 48px;
+    position: relative;
+  }
+
+  .phases::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: 28px; right: 28px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.3;
+  }
+
+  .phase {
+    flex: 1;
+    padding-top: 60px;
+    padding-right: 24px;
+    position: relative;
+  }
+
+  .phase-dot {
+    position: absolute;
+    top: 20px; left: 0;
+    width: 17px; height: 17px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .phase-dot::after {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .phase-num {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .phase-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .phase-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  .phase:last-child { padding-right: 0; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--navy);
+    padding: 48px 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+  }
+
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 48px 0;
+  }
+
+  @media print {
+    body { background: white; }
+    .cover { min-height: auto; padding: 48px; }
+    .section, .section-alt, .tech-band { padding: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-top">
+    <span class="cover-label">Company Profile</span>
+    <span class="cover-year">2025 — 2026</span>
+  </div>
+
+  <div class="cover-main">
+    <h1 class="cover-headline">
+      Chiarezza<br>
+      <em>Operativa.</em><br>
+      Decisioni Migliori.
+    </h1>
+    <div class="cover-divider"></div>
+    <p class="cover-tagline">
+      Rimuoviamo le frizioni nascoste tra leadership, dipartimenti e operazioni — rendendo l'azienda più fluida, coordinata e gestibile.
+    </p>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-stats">
+      <div class="stat-item">
+        <span class="stat-num">50+</span>
+        <span class="stat-label">Dipendenti target</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">50M+</span>
+        <span class="stat-label">Fatturato target</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Fasi di ingaggio</span>
+      </div>
+    </div>
+    <span class="cover-type">Consulenza Operativa · B2B</span>
+  </div>
+</div>
+
+<!-- POSIZIONAMENTO -->
+<div class="section" style="padding-top: 96px;">
+  <p class="section-label">Chi siamo</p>
+  <h2 class="section-title">Non siamo consulenti generici.<br>Siamo specialisti in esecuzione.</h2>
+  <p class="lead">
+    Interveniamo dove la crescita crea complessità invisibile: tra la leadership che decide e le operazioni che eseguono, tra le funzioni che non si coordinano, tra i processi che generano attrito anziché risultati.
+  </p>
+  <p class="lead">
+    Il nostro lavoro migliora il modo in cui l'azienda coordina, decide ed esegue — portando chiarezza dove c'è rumore, velocità dove c'è inerzia, controllo dove c'è opacità.
+  </p>
+</div>
+
+<!-- SERVIZI -->
+<div style="background: var(--cream-dark); padding: 80px 72px;">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <p class="section-label">Cosa facciamo</p>
+    <h2 class="section-title">Quattro aree di intervento</h2>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <span class="service-num">01</span>
+        <div class="service-title">Diagnosi</div>
+        <p class="service-desc">Il punto di ingresso. Analizziamo il funzionamento reale per identificare dove si generano inefficienze, incomprensioni e rallentamenti.</p>
+        <ul class="service-bullets">
+          <li>Analisi del funzionamento reale dell'azienda</li>
+          <li>Mappatura frizioni tra comunicazione, processi e decisioni</li>
+          <li>Mappatura del coordinamento tra leadership e operazioni</li>
+          <li>Piano d'azione concreto e prioritizzato</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">02</span>
+        <div class="service-title">Design e Implementazione</div>
+        <p class="service-desc">Progettiamo e introduciamo un modello operativo più chiaro ed efficace, con ruoli definiti e logiche decisionali accelerate.</p>
+        <ul class="service-bullets">
+          <li>Progettazione del modello operativo</li>
+          <li>Ridisegno dei flussi di lavoro</li>
+          <li>Definizione di ruoli e responsabilità</li>
+          <li>Meccanismi di coordinamento tra funzioni</li>
+          <li>Strumenti di visibilità sulle attività chiave</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">03</span>
+        <div class="service-title">Allineamento e Adozione</div>
+        <p class="service-desc">Facilitiamo la comprensione dei cambiamenti tra le persone, riducendo resistenze e traducendo tra leadership, dipartimenti e operazioni.</p>
+        <ul class="service-bullets">
+          <li>Facilitazione dell'allineamento tra funzioni</li>
+          <li>Gestione delle resistenze al cambiamento</li>
+          <li>Traduzione tra linguaggi di leadership e operazioni</li>
+          <li>Supporto all'adozione dei nuovi processi</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">04</span>
+        <div class="service-title">Advisory Continuativa</div>
+        <p class="service-desc">Affianchiamo la leadership nel tempo per mantenere chiarezza e adattare il modello man mano che l'azienda evolve.</p>
+        <ul class="service-bullets">
+          <li>Affiancamento della leadership nel lungo periodo</li>
+          <li>Supporto decisionale e prioritarizzazione</li>
+          <li>Adattamento del modello operativo</li>
+          <li>Presidio della chiarezza e dell'allineamento</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TECH -->
+<div class="tech-band">
+  <div class="tech-inner">
+    <p class="section-label-light">Automazioni e Tecnologia</p>
+    <h2 class="section-title-light" style="max-width: 540px;">Ottimizzazione decisionale<br>attraverso la tecnologia</h2>
+    <div class="tech-grid">
+      <div class="tech-item">
+        <div class="tech-item-title">Automazione dei processi</div>
+        <p class="tech-item-desc">Identifichiamo e automatizziamo le attività ripetitive e a basso valore aggiunto per liberare capacità operativa.</p>
+      </div>
+      <div class="tech-item">
+        <div class="tech-item-title">Visibilità e reportistica</div>
+        <p class="tech-item-desc">Configuriamo dashboard e sistemi di reportistica che rendono le informazioni chiave accessibili in tempo reale.</p>
+      </div>
+      <div class="tech-item">
+        <div class="tech-item-title">Supporto decisionale basato su dati</div>
+        <p class="tech-item-desc">Integriamo logiche data-driven nei processi decisionali, riducendo i tempi e aumentando la qualità delle scelte.</p>
+      </div>
+      <div class="tech-item">
+        <div class="tech-item-title">Strumenti digitali coerenti</div>
+        <p class="tech-item-desc">Selezioniamo e introduciamo strumenti digitali allineati al modello operativo — non soluzioni tecnologiche fine a se stesse.</p>
+      </div>
+      <div class="tech-item">
+        <div class="tech-item-title">Ottimizzazione dei flussi informativi</div>
+        <p class="tech-item-desc">Riduciamo il rumore informativo tra sistemi e persone, creando canali di comunicazione chiari ed efficaci.</p>
+      </div>
+      <div class="tech-item">
+        <div class="tech-item-title">Coordinamento tecnologico</div>
+        <p class="tech-item-desc">Introduciamo strumenti a supporto del coordinamento tra funzioni, eliminando le lacune operative più costose.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COSA NON FACCIAMO -->
+<div class="section-alt">
+  <div class="section-inner">
+    <p class="section-label-light">Perimetro</p>
+    <h2 class="section-title-light">Cosa non facciamo</h2>
+    <p class="lead-light">La focalizzazione è parte del valore che offriamo. Lavorare bene significa anche sapere dove non operare.</p>
+    <div class="not-grid">
+      <div class="not-item">
+        <span class="not-x">✕</span>
+        <span class="not-text">Non operiamo come agenzia commerciale né ci occupiamo di generazione lead</span>
+      </div>
+      <div class="not-item">
+        <span class="not-x">✕</span>
+        <span class="not-text">Non sostituiamo il management operativo né assumiamo ruoli esecutivi interni</span>
+      </div>
+      <div class="not-item">
+        <span class="not-x">✕</span>
+        <span class="not-text">Non eroghiamo formazione generica o soft skills scollegate dal contesto operativo</span>
+      </div>
+      <div class="not-item">
+        <span class="not-x">✕</span>
+        <span class="not-text">Non implementiamo sistemi IT complessi né svolgiamo attività da system integrator</span>
+      </div>
+      <div class="not-item" style="border-bottom: none;">
+        <span class="not-x">✕</span>
+        <span class="not-text">Non produciamo analisi teoriche senza applicazione pratica</span>
+      </div>
+      <div class="not-item" style="border-bottom: none;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CLIENTE IDEALE -->
+<div class="section">
+  <p class="section-label">A chi ci rivolgiamo</p>
+  <h2 class="section-title">Il cliente ideale</h2>
+  <div class="client-layout">
+
+    <div>
+      <p class="lead" style="margin-bottom: 0;">
+        Imprese guidate da imprenditore o direzione centrale, che stanno crescendo o affrontando maggiore complessità organizzativa e operativa.
+      </p>
+      <div class="client-numbers">
+        <div class="client-num-item">
+          <span class="cn-value">50+</span>
+          <span class="cn-label">dipendenti in organico</span>
+        </div>
+        <div class="client-num-item">
+          <span class="cn-value">50M+</span>
+          <span class="cn-label">di fatturato annuo</span>
+        </div>
+        <div class="client-num-item">
+          <span class="cn-value">B2B</span>
+          <span class="cn-label">Manifattura · Tech · Servizi complessi</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p style="font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px;">Segnali che indicano fit</p>
+      <div class="client-problems">
+        <div class="problem-item">
+          <div class="prob-dot"></div>
+          <span class="prob-text">Manca visibilità reale su ciò che accade in azienda</span>
+        </div>
+        <div class="problem-item">
+          <div class="prob-dot"></div>
+          <span class="prob-text">Le funzioni lavorano in modo disallineato tra loro</span>
+        </div>
+        <div class="problem-item">
+          <div class="prob-dot"></div>
+          <span class="prob-text">Il coordinamento tra vendita e delivery è debole</span>
+        </div>
+        <div class="problem-item">
+          <div class="prob-dot"></div>
+          <span class="prob-text">Le decisioni sono lente o spesso poco efficaci</span>
+        </div>
+        <div class="problem-item">
+          <div class="prob-dot"></div>
+          <span class="prob-text">La leadership è sovraccarica e dipendenza eccessiva dalla direzione</span>
+        </div>
+        <div class="problem-item" style="border-bottom: none;">
+          <div class="prob-dot"></div>
+          <span class="prob-text">Inefficienze ricorrenti che nessuno riesce a risolvere stabilmente</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TEAM -->
+<div style="background: var(--cream-dark); padding: 80px 72px;">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <p class="section-label">Il team</p>
+    <h2 class="section-title">Due ruoli, una visione</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <span class="team-initial">L</span>
+        <span class="team-role-label">Architettura Operativa</span>
+        <p class="team-desc">Guida la diagnosi delle criticità operative e strutturali. Progetta i sistemi di lavoro, definisce i modelli decisionali e introduce strumenti di visibilità e coordinamento che rendono l'azienda più governabile.</p>
+      </div>
+      <div class="team-card">
+        <span class="team-initial">A</span>
+        <span class="team-role-label">Relazioni e Adozione</span>
+        <p class="team-desc">Facilita la relazione con gli stakeholder e raccoglie le informazioni reali sul funzionamento dell'azienda. Traduce tra le diverse funzioni e supporta l'allineamento e l'adozione concreta dei cambiamenti introdotti.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RISULTATI -->
+<div class="section-alt">
+  <div class="section-inner">
+    <p class="section-label-light">Risultati attesi</p>
+    <h2 class="section-title-light">Cosa cambia dopo il nostro intervento</h2>
+    <div class="outcomes-grid">
+      <div class="outcome-card">
+        <span class="outcome-icon">I</span>
+        <div class="outcome-title">Chiarezza operativa</div>
+        <p class="outcome-desc">Visibilità reale su ciò che accade — chi fa cosa, come e perché.</p>
+      </div>
+      <div class="outcome-card">
+        <span class="outcome-icon">II</span>
+        <div class="outcome-title">Allineamento tra team</div>
+        <p class="outcome-desc">Le funzioni lavorano in modo coordinato, riducendo attrito e duplicazioni.</p>
+      </div>
+      <div class="outcome-card">
+        <span class="outcome-icon">III</span>
+        <div class="outcome-title">Decisioni più veloci</div>
+        <p class="outcome-desc">Processi decisionali più rapidi e fondati su dati reali e ruoli chiari.</p>
+      </div>
+      <div class="outcome-card">
+        <span class="outcome-icon">IV</span>
+        <div class="outcome-title">Meno sovraccarico</div>
+        <p class="outcome-desc">La leadership si libera dalle dipendenze operative e recupera focus strategico.</p>
+      </div>
+      <div class="outcome-card">
+        <span class="outcome-icon">V</span>
+        <div class="outcome-title">Delivery semplificata</div>
+        <p class="outcome-desc">Esecuzione più fluida che permette una scalabilità efficace e sostenibile.</p>
+      </div>
+      <div class="outcome-card">
+        <span class="outcome-icon">VI</span>
+        <div class="outcome-title">Azienda gestibile</div>
+        <p class="outcome-desc">Un'organizzazione più fluida, coordinata — facile da guidare anche nella complessità.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FASI INGAGGIO -->
+<div class="section">
+  <p class="section-label">Come lavoriamo</p>
+  <h2 class="section-title">Struttura dell'ingaggio</h2>
+  <p class="lead">Un percorso in quattro fasi. Ogni passaggio chiave viene condiviso e approvato con voi — siete sempre voi a decidere come procedere.</p>
+
+  <div class="phases" style="gap: 0;">
+    <div class="phase">
+      <div class="phase-dot"></div>
+      <div class="phase-num">Fase 01</div>
+      <div class="phase-title">Diagnosi</div>
+      <p class="phase-desc">Analizziamo il funzionamento reale, mappiamo le frizioni e consegniamo un piano d'azione chiaro e prioritizzato.</p>
+    </div>
+    <div class="phase" style="position: relative;">
+      <div class="phase-dot" style="border-color: var(--gold); background: var(--gold);"></div>
+      <div class="phase-num">Fase 02</div>
+      <div class="phase-title">Progettazione</div>
+      <p class="phase-desc">Disegniamo il nuovo modello operativo e ve lo presentiamo nel dettaglio. Nulla viene implementato senza la vostra approvazione.</p>
+      <div style="margin-top: 14px; display: inline-flex; align-items: center; gap: 7px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.35); border-radius: 3px; padding: 5px 10px;">
+        <span style="font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500;">Approvazione cliente</span>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-dot"></div>
+      <div class="phase-num">Fase 03</div>
+      <div class="phase-title">Implementazione</div>
+      <p class="phase-desc">Solo dopo la vostra approvazione introduciamo i cambiamenti in azienda, con piena attenzione all'adozione concreta da parte delle persone.</p>
+    </div>
+    <div class="phase">
+      <div class="phase-dot"></div>
+      <div class="phase-num">Fase 04</div>
+      <div class="phase-title">Advisory Continuativa</div>
+      <p class="phase-desc">Opzionale. Affianchiamo la leadership nel tempo per consolidare i cambiamenti e adattare il modello all'evoluzione dell'azienda.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span class="footer-brand">Consulenza Operativa</span>
+  <span class="footer-note">Chiarezza · Allineamento · Esecuzione</span>
+</div>
+
+</body>
+</html>
