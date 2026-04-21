@@ -263,11 +263,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   
   <script>
     window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-    formspree('initForm', { formElement: '#resource-download-form', formId: 'mojyjarv' });
     
-    document.getElementById('resource-download-form').addEventListener('formspree:success', function() {
+    formspree('initForm', { 
+      formElement: '#resource-download-form', 
+      formId: 'mojyjarv',
+      onSuccess: function() {
+        // Hide form and show success message
         document.getElementById('resource-download-form').style.display = 'none';
+        const successMsg = document.querySelector('[data-fs-success]');
+        if (successMsg) successMsg.style.display = 'block';
         
+        // Trigger download automatically
         if(pendingDownloadUrl) {
             const a = document.createElement('a');
             a.href = pendingDownloadUrl;
@@ -277,7 +283,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             document.body.removeChild(a);
         }
 
-        setTimeout(closeModal, 1500);
+        // Close modal after 2.5 seconds
+        setTimeout(closeModal, 2500);
+      }
     });
   </script>
   <script src="https://unpkg.com/@formspree/ajax@1" defer></script>

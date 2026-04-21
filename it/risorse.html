@@ -270,16 +270,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   
   <!-- FORMSPREE LOGIC FOR THE MODAL -->
   <script>
-    // Inizializza formspree ajax solo se caricato
+    // Inizializza formspree ajax con callback di successo integrata
     window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-    formspree('initForm', { formElement: '#resource-download-form', formId: 'mojyjarv' });
     
-    // Listen for formspree ajax specific success event
-    document.getElementById('resource-download-form').addEventListener('formspree:success', function() {
-        // Nascondi form
+    formspree('initForm', { 
+      formElement: '#resource-download-form', 
+      formId: 'mojyjarv',
+      onSuccess: function() {
+        // Nascondi form e mostra messaggio successo (gestito da FS ma forziamo per sicurezza)
         document.getElementById('resource-download-form').style.display = 'none';
+        const successMsg = document.querySelector('[data-fs-success]');
+        if (successMsg) successMsg.style.display = 'block';
         
-        // Fai partire il download automaticamente! (Creates a subtle element and clicks it)
+        // Fai partire il download automaticamente
         if(pendingDownloadUrl) {
             const a = document.createElement('a');
             a.href = pendingDownloadUrl;
@@ -289,8 +292,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             document.body.removeChild(a);
         }
 
-        // Chiudi il modale dopo qualche secondo in modo che l'utente veda il messaggio di success
-        setTimeout(closeModal, 1500);
+        // Chiudi il modale dopo 2.5 secondi per lasciar leggere il messaggio
+        setTimeout(closeModal, 2500);
+      }
     });
   </script>
   <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
