@@ -229,7 +229,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             
             document.getElementById('risorsaRichiestaStr').value = resTitle;
             document.getElementById('modalResourceTitle').innerText = resTitle;
-            openModal();
+            
+            // Verifica se abbiamo già i dati dell'utente
+            if (localStorage.getItem('sintelops_lead_captured') === 'true') {
+              if(pendingDownloadUrl) window.location.href = pendingDownloadUrl;
+            } else {
+              openModal();
+            }
           });
         });
       }
@@ -284,6 +290,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const successMsg = document.querySelector('[data-fs-success]');
         if (successMsg) successMsg.style.display = 'block';
         
+        // Salva lo stato per non chiedere più i dati
+        localStorage.setItem('sintelops_lead_captured', 'true');
+
         // Reindirizza alla pagina della guida
         if(pendingDownloadUrl) {
             window.location.href = pendingDownloadUrl;

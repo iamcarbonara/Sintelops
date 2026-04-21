@@ -226,7 +226,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             
             document.getElementById('risorsaRichiestaStr').value = resTitle;
             document.getElementById('modalResourceTitle').innerText = resTitle;
-            openModal();
+            
+            // Check if we already have the user's data
+            if (localStorage.getItem('sintelops_lead_captured') === 'true') {
+              if(pendingDownloadUrl) window.location.href = pendingDownloadUrl;
+            } else {
+              openModal();
+            }
           });
         });
       }
@@ -275,6 +281,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const successMsg = document.querySelector('[data-fs-success]');
         if (successMsg) successMsg.style.display = 'block';
         
+        // Save state so we don't ask again
+        localStorage.setItem('sintelops_lead_captured', 'true');
+
         // Redirect to the guide page
         if(pendingDownloadUrl) {
             window.location.href = pendingDownloadUrl;
