@@ -159,7 +159,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         topic: "Guides",
         type: "PDF",
         desc: "The complete guide to diagnosing bottlenecks, redesigning operational processes and eliminating superfluous infrastructure in your company.",
-        link: "assets/pillar_ristrutturazione.png"
+        link: "insights/ristrutturazione-operativa.html"
       }
     ];
 
@@ -212,7 +212,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <h2 class="service-title" style="font-size: 20px; line-height: 1.3;">${r.title}</h2>
               <p class="service-desc" style="font-size: 14px; margin-top: 12px; margin-bottom: 32px;">${r.desc}</p>
             </div>
-            <button class="btn btn-gold download-trigger-btn" style="width: 100%; text-align: center; display: inline-block;" data-title="${r.title}" data-link="${r.link}">Download (.${r.type.toLowerCase()})</button>
+            <button class="btn btn-gold download-trigger-btn" style="width: 100%; text-align: center; display: inline-block;" data-title="${r.title}" data-link="${r.link}">Discover More</button>
           </div>
         `).join('');
 
@@ -273,14 +273,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const successMsg = document.querySelector('[data-fs-success]');
         if (successMsg) successMsg.style.display = 'block';
         
-        // Trigger download automatically
+        // Redirect to the guide page
         if(pendingDownloadUrl) {
-            const a = document.createElement('a');
-            a.href = pendingDownloadUrl;
-            a.download = pendingDownloadUrl.split('/').pop() || 'download';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+            window.location.href = pendingDownloadUrl;
         }
 
         // Close modal after 2.5 seconds
