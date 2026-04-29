@@ -38,6 +38,14 @@
   /* Layout */
   --section-padding: 96px;
   --max-width: 1080px;
+
+  /* Legacy aliases — keep in sync with stripe-* vars above */
+  --navy: var(--stripe-navy);
+  --gold: var(--stripe-purple);
+  --gold-light: var(--stripe-magenta);
+  --cream: var(--stripe-bg-alt);
+  --cream-dark: var(--stripe-bg-alt);
+  --text-muted: var(--stripe-body);
 }
 
 /* =========================================================================
@@ -51,8 +59,7 @@
 }
 
 body {
-  font-family: "sohne-var", "SF Pro Display", -apple-system, system-ui, sans-serif;
-  font-feature-settings: "ss01";
+  font-family: "DM Sans", -apple-system, system-ui, sans-serif;
   background-color: var(--stripe-bg);
   color: var(--stripe-body);
   font-size: 16px;

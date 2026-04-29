@@ -2,5 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /executive-brief.html
 Disallow: /assets/
+Disallow: /insights/template-articolo.html
+Disallow: /it/insights/template-articolo.html
 
 Sitemap: https://www.sintelops.com/sitemap.xml
