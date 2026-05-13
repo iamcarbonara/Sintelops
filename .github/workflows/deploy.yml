@@ -12,7 +12,8 @@ jobs:
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ftp.sintelops.com
+          server: sintelops.com
           username: operations@sintelops.com
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /public_html/
+          protocol: ftp
